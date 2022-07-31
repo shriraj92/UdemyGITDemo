@@ -22,6 +22,9 @@ public class WindowHandlesAssignment {
 		System.out.println(driver.findElement(By.cssSelector(".example")).getText());
 		driver.switchTo().window(parentWindowID);
 		System.out.println(driver.findElement(By.xpath("//h3[text()='Opening a new window']")).getText());
+		
+		
+		System.out.println("This statement is written to check GIT functioanility");
 	}
 
 }
