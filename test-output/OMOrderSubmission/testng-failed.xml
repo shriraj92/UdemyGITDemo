@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [OMOrderSubmission]" guice-stage="DEVELOPMENT">
+  <parameter name="PreviousNetwork" value="Rogers"/>
+  <listeners>
+    <listener class-name="testNG.TestNGListeners"/>
+  </listeners>
+  <test thread-count="5" name="OMEndtoEnd(failed)">
+    <groups>
+      <run>
+        <include name="Smoke"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="testNG.InitiateOrderPage">
+        <methods>
+          <include name="proceedToPCPage"/>
+        </methods>
+      </class> <!-- testNG.InitiateOrderPage -->
+    </classes>
+  </test> <!-- OMEndtoEnd(failed) -->
+</suite> <!-- Failed suite [OMOrderSubmission] -->

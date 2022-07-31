@@ -1,0 +1,83 @@
+1. @Test annotation is used in TestNG for each test method execution.
+2. There should always be a method defined after @Test annotation
+3. Test steps should always be written inside a method while working with TestNG framework.
+
+4. Important tags in testNG XML file
+	test suite
+	test-------->It is a treated similar to module
+	 			  where u group similar classes or classes of same dept into a module
+	classes
+
+5.	If there are multiple tests present in a suite of an testNG xml file then a specific suite can be skipped by adding enable property with value false
+	example is <test thread-count="5" name="OMEndtoEnd" enabled="false">
+	
+6. If there are multiple methods present in a class and there is an requirement to skip or run only specific methods then exclude or include options can be used
+	Exclude----->Exclude tag is used when specific method doesnt need to be tested
+				 example is 
+	<class name="testNG.ProductConfigPage">
+ 	<methods>
+ 	<exclude name="pricinglob"/>
+ 	</methods>
+  </class>
+	
+	Include------>Include tag is used when only specific method that need to be tested
+	<class name="testNG.ProductConfigPage">
+ 	<methods>
+ 	<include name="pricingorder"/>
+ 	</methods>
+  </class>
+  Note : if include tag is mentioned then only that method will be executed.other methods will not be executed
+
+7. if there are multiple methods that have common starting name has to be skipped/tested then regular expression can be used(USING .*)
+	<class name="testNG.ProductConfigPage">
+ 	<methods>
+ 	<exclude name="pricing.*"/>
+ 	</methods>
+  </class>
+  
+8.  package level testing also can be done through testNG xml file.This can be acheived using package tags in xml file
+	for example if regression testing has to be done then group all those classes into an package and run that particular package
+	<suite name="regression">
+  <test thread-count="5" name="regression">
+	<packages>
+	<package name="testNG"/>
+	</packages>
+      </test>
+</suite> 
+
+9.TestNG Annotations
+  @BeforeTest----->This will run before the test folder of the testNG xml file.
+  				   Note:This will run only before the test folder of the class in which BeforeTest annotation is defined.
+  				   Other test folders will not be considered
+  				   Example: Delete cookies/Data can be defined as part of BeforeTest
+  @AfterTest------>This will run after the test folder of the testNG xml file.		
+  	   			   Note:This will run only after the test folder of the class in which BeforeTest annotation is defined
+  	   			   Other test folders will not be considered
+  @BeforeSuite---->This will run before the test suite of the testNG xml file.
+  				   Example: Global variables can be defined as part of BeforeSuite
+  @AfterSuite----->This will run after the test suite of the testNG xml file.
+  
+  @BeforeMethod--->This will run before all the methods present in the same class where this method is defined
+  @AfterMethod---->This will run after all the methods present in the same class where this method is defined
+  @BeforeClass---->This will run before the class methods
+  @AfterClass----->This will run after the class methods
+  
+  
+  Note: Before/After Test and Before/After Suite are testNG XML file level operations and 
+  		Before/After Method and Before/After Class are class file level operations
+  		
+10.TestNG Annotation Attributes
+Groups in TestNG-------->if the requirement is to run only specific methods from each class then groups can be used
+							example : groups={"Smoke"} will be added after the Test annotation of the method
+							and groups tag needs to be added before the class tag in testNG xml file
+						
+dependsOnMethods-------->if there is an prerequisite for any method then dependsOnMethods testNG attribute can be used
+						 syntax @Test(dependsOnMethods={"methodName"})
+			
+enabled----------------->if there is an specific method that need not be executed in a class then enabled can be used
+						 syntax @Test(enabled=false)
+						 
+timeOut------------------>if there is any method which takes more time and that needs to be stopped after certain time then timeOut attribute can be used
+						  syntax @Test(timeOut=4000) time in millisec
+							
+							

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="OMOrderSubmission">
+<parameter name="PreviousNetwork" value="Rogers"/>
+<listeners>
+<listener class-name="testNG.TestNGListeners"/>
+</listeners>
+  <test thread-count="5" name="OMEndtoEnd">
+  <groups>
+  <run>
+  <include name="Smoke"/>
+  </run>
+  </groups>
+    <classes>
+      <class name="testNG.InitiateOrderPage"/>
+      <class name="testNG.ProductConfigPage"/>
+      <class name="testNG.OrderSubmissionPage"/>
+    </classes>
+  </test>
+  
+  <test name="ParametersTesting" enabled="false">
+  <parameter name="PreviousPlan" value="1 month"/>
+  <classes>
+  <class name="testNG.ProductConfigPage"/>
+  </classes>
+  </test>
+  
+  <test name="PCPage" enabled="false">
+  <classes>
+  <class name="testNG.ProductConfigPage">
+ 	<methods>
+ 	<include name="pricing.*"/>
+ 	</methods>
+  </class>
+  </classes>
+  </test>
+</suite> 
